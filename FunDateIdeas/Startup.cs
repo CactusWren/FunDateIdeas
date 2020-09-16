@@ -1,3 +1,4 @@
+using FunDateIdeas.DAL.Data;
 using FunDateIdeas.Data.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,10 @@ namespace FunDateIdeas
                     .Build();
             });
             services.AddControllersWithViews();
+            services.AddDbContext<FunDateIdeasDbContext>(config =>
+            {
+                config.UseSqlServer(_configuration.GetConnectionString("FunDateIdeasDb"));
+            });
             services.AddDbContext<FunDateIdeasIdentityDbContext>(config =>
             {
                 config.UseSqlServer(_configuration.GetConnectionString("FunDateIdeasDb"));

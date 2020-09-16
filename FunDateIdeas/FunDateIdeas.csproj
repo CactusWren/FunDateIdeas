@@ -20,4 +20,8 @@
     <Folder Include="Logic\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FunDateIdeas.DAL\FunDateIdeas.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
