@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_loginLayout";
+}
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="fadeIn first p-2">
+            <img src="~/images/core_logo01.png" id="logo" alt="Logo Image" style="height:50%; width:50%" />
+        </div>
+        <form action="/Accounts/SignIn" method="post">
+            <input type="text" id="username" class="fadeIn second" name="username" placeholder="login">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @if (TempData["SignInError"] != null)
+    {
+        <script>
+            toastr.options = {
+                positionClass: "toast-top-full-width",
+                timeOut: "10000"
+            }
+            toastr.success("Your revision has successfully submitted. We will get working on your changes right away!");
+        </script>
+    }
+}

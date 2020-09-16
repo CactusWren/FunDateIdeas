@@ -1,0 +1,28 @@
+﻿@model FunDateIdeas.ViewModels.Accounts.UpdateUserViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.Message != null)
+{
+    <h4 class="text-danger">@ViewBag.Message</h4>
+}
+@Model.UserName
+<div class="card col-md-6">
+    <div class="card-header">
+        <h5>Update User</h5>
+    </div>
+    <div class="card-body">
+        <form action="/Accounts/UpdateUser" data-form-data="update-employee-user" method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                    <input type="text" class="form-control update-employee-user" name="username" id="username" value="@Model.UserName" />
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <a href="/Accounts/ManageUsers">Return to Manage Users Page</a>
+    </div>
+</div>

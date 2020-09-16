@@ -1,0 +1,108 @@
+﻿@model List<FunDateIdeas.ViewModels.Accounts.ManageUsersViewModel>
+@{
+    ViewData["Title"] = "Manage Core Users";
+}
+<div class="card">
+    <div class="card-header">
+        <h5>Manage Core Users</h5>
+    </div>
+    <div class="card-body">
+        <div class="">
+            <a href="/Accounts/CreateUser" class="btn btn-primary">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Add User
+            </a>
+        </div>
+        @if (Model.Count() > 0)
+        {
+            <table id="userTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        var rowId = "user" + user.UserName;
+                        <tr id="@rowId">
+                            <td>@user.UserName</td>
+                            <td>
+                                <a class="btn btn-outline-primary" href="/Accounts/UpdateUser?Id=@user.Id"><span class="fa fa-update"></span>Update</a>
+                                <button class="btn btn-outline-danger" onclick="removeUser('@user.Id','@user.UserName')"><span class="fa fa-remove"></span>Remove</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h4>No users created yet. Add some users by clicking the Add User button.</h4>
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning justify-content-between">
+                <h4 class="modal-title" id="myModalLabel">
+                    Confirm User removal
+                </h4>
+                <button type="button" class="close data-dismiss" data-dismiss="modal"
+                        aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/Accounts/DeleteUser" method="post">
+                    <input id="Id" name="Id" hidden />
+                    <h4>Please confirm you would like to remove <span class="text-danger" id="userToDelete"></span> from Core.</h4>
+                    <div class="pt-2 row justify-content-end">
+                        <button type="submit" class="btn btn-danger">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer row justify-content-end">
+                <button type="button" class="btn btn-default data-dismiss"
+                        data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#userTable').DataTable({
+                'bPaginate': false,
+                'bLengthChange': false,
+            });
+
+            $('.data-dismiss').click(function () {
+                $('#deleteUserModal').css("display", "none").removeClass("show");
+            })
+        });
+        function removeUser(userId, userName) {
+            $('#Id').val(userId);
+            $('#userToDelete').html(userName);
+            $('#deleteUserModal').css("display", "flex").addClass("show");
+        }
+    </script>
+}
+
+
+
+
+

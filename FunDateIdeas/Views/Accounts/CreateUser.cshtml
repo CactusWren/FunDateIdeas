@@ -1,0 +1,27 @@
+﻿@if(ViewBag.Message != null)
+{
+    <h4 class="text-danger">@ViewBag.Message</h4>
+}
+
+<div class="card col-md-6">
+    <div class="card-header">
+        <h5>Add Core User</h5>
+    </div>
+    <div class="card-body">
+        <form action="/Accounts/CreateUser" data-form-data="register-employee-user" method="post">
+            <dl class="row">
+                <dt class="col-md-6 text-right">Username</dt>
+                <dd class="col-md-6"><input type="text" class="form-control register-employee-user" name="username" id="username" value="" /></dd>
+                <dt class="col-md-6 text-right">Password</dt>
+                <dd class="col-md-6"><input type="password" class="form-control register-employee-user" name="password" id="password" value="" /></dd>
+                <dt class="col-md-6 text-center"></dt>
+                <dd class="col-md-6 text-center"><button type="submit" class="btn btn-primary">Submit</button><button id="createUserFormReset" type="reset" class="btn btn-danger">Reset</button></dd>
+            </dl>
+        </form>
+    </div>
+    <div class="card-footer">
+        <a href="/Accounts/ManageUsers"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+</div>
+
+

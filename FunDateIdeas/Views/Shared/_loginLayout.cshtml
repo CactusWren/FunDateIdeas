@@ -1,0 +1,32 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*<style>
+            body {
+            background-image: url('../../images/Flag_Background.jpg');
+            margin: 0;
+            }
+        </style>*@
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
+    <script src="~/lib/jquery/jquery.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
+</body>
+
+</html>
