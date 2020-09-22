@@ -13,6 +13,15 @@ namespace FunDateIdeas.DAL.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<DateIdeaLike>().HasKey(table => new {
+                table.DateIdeaId,
+                table.UserId
+            });
+        }
         public DbSet<DateIdea> DateIdeas { get; set; }
+        public DbSet<DateIdeaLike> DateIdeaLikes { get; set; }
     }
 }

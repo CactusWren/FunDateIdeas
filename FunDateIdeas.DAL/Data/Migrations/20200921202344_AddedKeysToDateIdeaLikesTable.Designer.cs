@@ -4,14 +4,16 @@ using FunDateIdeas.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FunDateIdeas.DAL.Data.Migrations
 {
     [DbContext(typeof(FunDateIdeasDbContext))]
-    partial class FunDateIdeasDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200921202344_AddedKeysToDateIdeaLikesTable")]
+    partial class AddedKeysToDateIdeaLikesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
